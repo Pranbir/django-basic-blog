@@ -1,0 +1,19 @@
+#NEXT:
+
+django Authentication
+token based authentication
+django async task 
+JSONrespose
+---Projects--
+
+DSA
+
+DRF
+
+{"a": "askfgqkf",
+"b" : "afjgqdf",
+"c" : "dskjdhfkj"}
+
+a = askfgqkf
+b = afjgqdf
+c = dskjdhfkj

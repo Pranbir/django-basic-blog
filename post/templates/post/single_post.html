@@ -1,0 +1,10 @@
+{% extends 'post/base.html' %} {% block main_block %}
+<div class="text-center">
+<h1 class="mt-5">{{post.title}}</h1>
+<img src="{{post.blog_img.url}}" class="img img-center img-fluid"/>
+
+<div class="my-5">
+{{post.content|safe}}
+</div>
+<div>
+{% endblock main_block %}

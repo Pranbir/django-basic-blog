@@ -1,0 +1,24 @@
+{% extends 'post/base.html' %} 
+
+{% block main_block %} 
+
+{% include 'post/main_banner.html' %}
+<!--Blog posts-->
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      {% if posts %} 
+        {% for each_post in posts %} 
+          {% include 'post/post_tile.html' with each_post=each_post %} 
+        {% endfor %} 
+      {% else %}
+        <div class="col text-center">
+          <h2 style="">No Posts available</h2>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!--Blog posts end-->
+
+{% endblock main_block %}

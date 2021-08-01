@@ -1,0 +1,28 @@
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <img
+      class="card-img-top"
+      alt="Thumbnail [100%x225]"
+      style="height: 225px; width: 100%; display: block"
+      src="{{each_post.blog_img.url}}"
+      data-holder-rendered="true"
+    />
+    <div class="card-body">
+      <b class="card-text">{{each_post.title|truncatewords:5}}</b>
+      {{each_post.content|safe|truncatewords:20}}
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <a href="{% url 'post:post_detail' each_post.id %}">View</a>
+          </button>
+          {% if user.is_authenticated %}
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+                <a href="{% url 'admin:index'%}post/blogpost/{{each_post.id}}/change/">Edit</a>
+            </button>
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
