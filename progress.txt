@@ -17,3 +17,16 @@ DRF
 a = askfgqkf
 b = afjgqdf
 c = dskjdhfkj
+
+TODO
+----
+register page
+login page 
+async worker
+send mail
+JSONrespose
+Authentication Default, token
+-- More control on ORM
+- override save
+- Signal
+
