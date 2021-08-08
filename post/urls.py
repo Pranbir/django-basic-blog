@@ -12,4 +12,7 @@ urlpatterns = [
     path("logout", views.logout_view , name="logout"),
     path("login", views.login_view , name="login"),
     path("register", views.register_view , name="register"),
+    path("long", views.very_long_view , name="long"),
+    path("aaaa", views.aaaa , name="aaaa"),
+    path("mail", views.mail_sender , name="mail_sender"),
 ]

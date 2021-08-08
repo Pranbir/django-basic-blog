@@ -4,13 +4,15 @@
 login
 register
 Authentication Default
+async worker
+allowed host
+JSONrespose
 
 TODO
 ----
 
-async worker
 send mail
-JSONrespose
+
 Authentication token
 -- More control on ORM
 - override save

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@w@0+b8dso+rbxt#2)#%=lim-gh8@sr@yd765g7-v1n(a@24i&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_user_agents',
+    'django_celery_results',
     'tinymce',
     'post',
 ]
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -132,3 +135,20 @@ TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "post/tinymce/")
 
 MEDIA_URL = '/upload/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload/')
+
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_RESULT_BACKEND = 'django-db'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'YOUR_HOST'
+EMAIL_HOST_USER = 'YOUR_USER_NAME'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'YOUR_PASSWORD'
+

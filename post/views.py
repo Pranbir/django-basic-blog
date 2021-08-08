@@ -6,6 +6,8 @@ from django.contrib.auth import logout
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from . import tasks
+
 
 # Create your views here.
 
@@ -65,3 +67,27 @@ def register_view(request):
         user.save()
         login(request, user)
         return HttpResponseRedirect(reverse('post:home'))
+
+def very_long_view(request):
+    print("Long view called")
+    tasks.long_task.delay()
+    print("Long view ended")
+    return JsonResponse(dict(msg="Very long job working", status=200))
+
+def aaaa(request):
+    print("User is accessing aaaa view. Data collection job has been submitted")
+    browser = browser = "{} {}".format(request.user_agent.browser.family, request.user_agent.browser.version_string)
+    tasks.store_user_data.delay(browser)
+    return JsonResponse(dict(msg="Wow, you are watching aaaa", status=200))
+
+def mail_sender(request):
+    if request.method == "GET":
+        msg = request.GET.get("msg")     
+        context = {"msg" : msg}
+        return render(request, 'post/email.html',context)
+    elif request.method == "POST":
+        to = request.POST.get('to')
+        subject = request.POST.get('subject')
+        text = request.POST.get('text')
+        tasks.async_send_mail.delay(to, subject, text)
+        return HttpResponseRedirect(reverse('post:mail_sender')  + "?msg=Free ka Mail Bhej diye gaye hai... 🤬🤬")

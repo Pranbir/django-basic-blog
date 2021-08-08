@@ -18,3 +18,6 @@ class blogpost(models.Model):
 class comments(models.Model):
     comment_data = models.TextField(null=False)
     parent_post = models.ForeignKey(blogpost, on_delete=models.CASCADE)
+
+class temptable(models.Model):
+    browser_data = models.TextField(null=True)
